@@ -15,11 +15,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <AutomationFileTree
-    :nodes="nodes"
-    :dark-mode="darkMode"
-    @upload="emit('upload', $event)"
-    @configure="emit('configure', $event)"
-    @execute="emit('execute', $event)"
-  />
+  <AutomationFileTree :nodes="nodes" :dark-mode="darkMode" @configure="emit('configure', $event)"
+    @execute="emit('execute', $event)" />
 </template>
+//@upload="emit('upload', $event)"

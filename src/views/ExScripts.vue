@@ -60,7 +60,7 @@ export default {
 .viewfinder {
   position: fixed;
   top: 0;
-  left: 20vw;
+  left: 180px;
   width: 80vw;
   height: 150vh;
   /* 100% of viewport width */
@@ -72,7 +72,7 @@ export default {
 }
 
 .flex-1 {
-  left: 20vw;
+  left: 180px;
   width: 60vw;
   height: 150vh;
 }

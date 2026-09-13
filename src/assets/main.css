@@ -450,6 +450,52 @@ v-avatar {
     padding: 0;
 }
 
+.file-manager-session {
+    position: relative;
+    isolation: isolate;
+}
+
+.configure-dialog-fields {
+    padding: 1px;
+}
+
+.configure-dialog-shell {
+    position: fixed;
+    y: 0;
+    x: 0;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.configure-dialog-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 42%);
+}
+
+.configure-dialog-card {
+    position: relative;
+    z-index: 1;
+    width: min(600px, 100%);
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.configure-dialog-enter-active,
+.configure-dialog-leave-active {
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.configure-dialog-enter-from,
+.configure-dialog-leave-to {
+    opacity: 0;
+    transform: translateY(-12px);
+}
+
 .file-manager-card .panel-title {
     margin-bottom: 18px;
 }

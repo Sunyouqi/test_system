@@ -77,61 +77,61 @@ const searchModel = computed({
     <section class="two-col">
       <Chart />
       <v-card class="panel quick-panel" elevation="0">
-      <div class="panel-title">
-        <div>
-          <h2>Quick run</h2>
-          <p>Execute a saved test plan</p>
-        </div><v-icon icon="mdi-dots-horizontal" color="grey" />
-      </div><v-select v-model="selectedScriptModel" label="TEST PLAN" density="compact" variant="outlined"
-        :items="files.filter(f => f.type === 'pytest').map(f => f.name)" /><v-select v-model="selectedEnvironmentModel"
-        label="ENVIRONMENT" density="compact" variant="outlined" :items="['Staging', 'Production', 'Lab']" />
-      <div class="inline"><v-text-field v-model="selectedBranchModel" label="BRANCH" density="compact"
-          variant="outlined" /><v-text-field v-model="targetModel" label="TARGET" density="compact"
-          variant="outlined" /></div><v-btn block color="primary" elevation="0" prepend-icon="mdi-play"
-        @click="emit('run-plan')">{{ runnerState === 'running' ? 'Starting execution…' : 'Run now' }}<span
-          class="shortcut">⌘ ↵</span></v-btn>
-      <div class="last-run"><v-icon icon="mdi-check-circle" color="success" /><span><strong>Last run
-            passed</strong><small>Today at 14:32 · 03m 42s</small></span><code>lab-east-01</code></div>
+        <div class="panel-title">
+          <div>
+            <h2>Quick run</h2>
+            <p>Execute a saved test plan</p>
+          </div><v-icon icon="mdi-dots-horizontal" color="grey" />
+        </div><v-select v-model="selectedScriptModel" label="TEST PLAN" density="compact" variant="outlined"
+          :items="files.filter(f => f.type === 'pytest').map(f => f.name)" /><v-select
+          v-model="selectedEnvironmentModel" label="ENVIRONMENT" density="compact" variant="outlined"
+          :items="['Staging', 'Production', 'Lab']" />
+        <div class="inline"><v-text-field v-model="selectedBranchModel" label="BRANCH" density="compact"
+            variant="outlined" /><v-text-field v-model="targetModel" label="TARGET" density="compact"
+            variant="outlined" /></div><v-btn block color="primary" elevation="0" prepend-icon="mdi-play"
+          @click="emit('run-plan')">{{ runnerState === 'running' ? 'Starting execution…' : 'Run now' }}<span
+            class="shortcut">⌘ ↵</span></v-btn>
+        <div class="last-run"><v-icon icon="mdi-check-circle" color="success" /><span><strong>Last run
+              passed</strong><small>Today at 14:32 · 03m 42s</small></span><code>lab-east-01</code></div>
       </v-card>
     </section>
 
     <section class="two-col lower">
       <v-card class="panel repository-panel" elevation="0">
-      <div class="panel-title">
-        <div>
-          <h2>Script repository</h2>
-          <p>Browse pytest, YAML and XML automation assets</p>
-        </div><v-btn variant="text" color="primary" size="small" @click="emit('navigate', 'Script repository')">View
-          repository <v-icon icon="mdi-arrow-right" /></v-btn>
-      </div>
-      <div class="repo-toolbar"><v-text-field v-model="searchModel" density="compact" variant="outlined" hide-details
-          placeholder="Filter files..." prepend-inner-icon="mdi-magnify" /><v-btn variant="outlined"
-          prepend-icon="mdi-source-branch">main</v-btn></div>
-      <div class="file-list"><button v-for="file in filteredFiles" :key="file.name"
-          :class="{ selected: selectedScript === file.name }" @click="emit('update:selected-script', file.name)"><span
-            class="file-type" :class="file.type">{{ file.type === 'pytest' ? 'PY' : file.type.toUpperCase()
-            }}</span><span class="file-copy"><strong>{{ file.name }}</strong><small>{{ file.description
-            }}</small></span><v-chip size="x-small" :color="file.status === 'draft' ? 'warning' : 'success'"
-            variant="tonal">{{ file.status }}</v-chip></button></div>
+        <div class="panel-title">
+          <div>
+            <h2>文件仓库</h2>
+            <p>Browse pytest, YAML and XML automation assets</p>
+          </div><v-btn variant="text" color="primary" size="small" @click="emit('navigate', '文件仓库')">View
+            repository <v-icon icon="mdi-arrow-right" /></v-btn>
+        </div>
+        <div class="repo-toolbar"><v-text-field v-model="searchModel" density="compact" variant="outlined" hide-details
+            placeholder="Filter files..." prepend-inner-icon="mdi-magnify" /><v-btn variant="outlined"
+            prepend-icon="mdi-source-branch">main</v-btn></div>
+        <div class="file-list"><button v-for="file in filteredFiles" :key="file.name"
+            :class="{ selected: selectedScript === file.name }" @click="emit('update:selected-script', file.name)"><span
+              class="file-type" :class="file.type">{{ file.type === 'pytest' ? 'PY' : file.type.toUpperCase()
+              }}</span><span class="file-copy"><strong>{{ file.name }}</strong><small>{{ file.description
+              }}</small></span><v-chip size="x-small" :color="file.status === 'draft' ? 'warning' : 'success'"
+              variant="tonal">{{ file.status }}</v-chip></button></div>
       </v-card>
       <v-card class="panel recent-panel" elevation="0">
-      <div class="panel-title">
-        <div>
-          <h2>Recent runs</h2>
-          <p>Latest activity from your workspace</p>
-        </div><v-btn variant="text" color="primary" size="small" @click="emit('navigate', 'Run history')">View all
-          <v-icon icon="mdi-arrow-right" /></v-btn>
-      </div>
-      <div class="run-list">
-        <div v-for="run in runs.slice(0, 4)" :key="run.script + run.time" class="run-row"><v-icon
-            :icon="run.status === 'Passed' ? 'mdi-check-circle' : run.status === 'Running' ? 'mdi-loading' : 'mdi-clock-outline'"
-            :color="run.status === 'Passed' ? 'success' : 'warning'" size="19" /><span><strong>{{ run.script
-            }}</strong><small>{{ run.target }} · {{ run.duration }}</small></span><time>{{ run.time }}</time>
+        <div class="panel-title">
+          <div>
+            <h2>Recent runs</h2>
+            <p>Latest activity from your workspace</p>
+          </div><v-btn variant="text" color="primary" size="small" @click="emit('navigate', '执行历史')">View all
+            <v-icon icon="mdi-arrow-right" /></v-btn>
         </div>
-      </div>
-      <div class="runner-status"><span class="online-dot" />Runner is ready <v-btn variant="text"
-          color="primary" size="small" @click="emit('open-preset')">Configure preset <v-icon
-            icon="mdi-arrow-right" /></v-btn></div>
+        <div class="run-list">
+          <div v-for="run in runs.slice(0, 4)" :key="run.script + run.time" class="run-row"><v-icon
+              :icon="run.status === 'Passed' ? 'mdi-check-circle' : run.status === 'Running' ? 'mdi-loading' : 'mdi-clock-outline'"
+              :color="run.status === 'Passed' ? 'success' : 'warning'" size="19" /><span><strong>{{ run.script
+              }}</strong><small>{{ run.target }} · {{ run.duration }}</small></span><time>{{ run.time }}</time>
+          </div>
+        </div>
+        <div class="runner-status"><span class="online-dot" />Runner is ready <v-btn variant="text" color="primary"
+            size="small" @click="emit('open-preset')">Configure preset <v-icon icon="mdi-arrow-right" /></v-btn></div>
       </v-card>
     </section>
   </div>
