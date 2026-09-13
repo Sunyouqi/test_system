@@ -58,7 +58,7 @@ import { useProvideSidebar } from '../use/useSidebar'
 
 const props = withDefaults(defineProps<SidebarMenuProps>(), {
   collapsed: false,
-  width: '18vw',
+  width: '210px',
   widthCollapsed: '65px',
   showOneChild: false,
   showChild: false,

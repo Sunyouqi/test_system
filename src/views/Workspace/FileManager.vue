@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import FileTree from '../../features/file-manager/components/FileTree.vue'
 import type { AutomationNode } from '../../features/file-manager/types'
+import ConfigureDialog from '../../components/ConfigureDialog.vue'
 
 defineProps<{
   uploadedTree: AutomationNode[]
@@ -20,7 +21,8 @@ const emit = defineEmits<{
       <div>
         <div class="eyebrow">WORKSPACE SESSION</div>
         <h1>File manager</h1>
-        <p></p>
+        <v-btn>configure modal</v-btn>
+        <br /><br />
       </div>
     </div>
     <div class="file-manager-session">
@@ -29,5 +31,6 @@ const emit = defineEmits<{
           @configure="emit('configure', $event)" @execute="emit('execute', $event)" />
       </v-card>
     </div>
+    <ConfigureDialog />
   </section>
 </template>
