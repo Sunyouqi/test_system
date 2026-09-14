@@ -10,7 +10,7 @@ target_folder = '../iats-poc'
 flask_directory = '../flask'
 app = Flask(__name__)
 # Allows the Vue PC to access the endpoints
-CORS(app, resources={r"/api/*": {"origins": "http://10.136.195.144:5173/api"}})
+CORS(app, resources={r"/api/*": {"origins": "http://x.x.x.x:5173/api"}})
 
 
 @app.route('/api/data', methods=['GET'])
