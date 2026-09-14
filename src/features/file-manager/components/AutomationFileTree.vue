@@ -10,7 +10,7 @@ const message = ref('')
 
 const postResponse = ref('')
 
-const BACKEND_URL = 'http://192.168.51.5:5000/api'
+const BACKEND_URL = 'http://x.x.x.x:5000/api'
 
 // NATIVE FETCH: GET Request
 async function fetchMessage(node: AutomationNode) {
